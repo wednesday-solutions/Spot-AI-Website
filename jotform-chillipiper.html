@@ -681,7 +681,17 @@ div.form-header-group.header-large {
 	    ChiliPiper[a].q=(ChiliPiper[a].q||[]).concat([arguments])}}window.ChiliPiper=window.ChiliPiper||"submit scheduling showCalendar submit widget bookMeeting".split(" ").reduce(function(a,b){a[b]=q(b);return a},{});
 ChiliPiper.scheduling("spotai", "website_demo_trial_leads", {title: "Thanks! What time works best for a quick call?"})
 	  
-  document.forms['213124305524443'].addEventListener('submit', q);  
+  document.forms['213124305524443'].addEventListener('submit', function(a) { 
+	$.ajax({
+      url: $('#213124305524443').attr('action'),
+      type: 'POST',
+      data : $('#213124305524443').serialize(),
+      success: function(){
+	      q(a);
+      }
+    });
+    return false;
+  });  
   </script>
 </form>
 <script src="https://js.chilipiper.com/marketing.js" type="text/javascript" async></script>
